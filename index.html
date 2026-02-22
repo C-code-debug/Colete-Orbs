@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <title>Colete Orbs 🌟</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Custom cursor -->
+<div id="cursor"></div>
+
+<div id="gameContainer">
+  <canvas id="gameCanvas"></canvas>
+
+  <!-- ════ MAIN MENU ════ -->
+  <div id="mainMenu">
+    <div class="menu-bg-stars"></div>
+
+    <div class="menu-logo">
+      Colete<br><span>Orbs</span> 🌟
+    </div>
+    <p class="menu-subtitle">Arcade &bull; Idle &bull; Casual</p>
+
+    <div class="menu-score-display" id="menuSavedScore">
+      Pontos salvos: <span>0</span>
+    </div>
+
+    <button class="btn btn-primary" id="startBtn">▶ Jogar</button>
+    <button class="btn btn-danger"  id="resetBtn">🗑 Resetar Progresso</button>
+  </div>
+
+  <!-- ════ LOADING ════ -->
+  <div id="loadingScreen">
+    <div class="loader-orb"></div>
+    <p class="loading-text">CARREGANDO...</p>
+  </div>
+
+  <!-- ════ GAME HUD ════ -->
+  <div id="gameUI">
+    <!-- Left -->
+    <div style="display:flex;flex-direction:column;gap:6px;align-items:flex-start;">
+      <button class="hud-btn hud-menu-btn" id="menuBtn">⚡ Upgrades</button>
+      <button class="hud-btn" id="pauseBtn" style="background:linear-gradient(160deg,#a78bfa,#7c3aed);color:white;box-shadow:0 4px 0 #4c1d95;">⏸ Pausa</button>
+    </div>
+
+    <!-- Center -->
+    <div class="hud-center">
+      <div class="score-bubble">
+        <span class="score-label">Pontos</span>
+        <span class="score-value" id="scoreVal">0</span>
+      </div>
+      <div style="display:flex;gap:6px;flex-wrap:wrap;justify-content:center;">
+        <div class="rebirth-badge" id="rebirthVal">⭐ x0</div>
+        <div class="multiplier-badge" id="multVal">✨ 1x</div>
+      </div>
+    </div>
+
+    <!-- Right -->
+    <button class="hud-btn hud-save-btn" id="saveExitBtn">💾 Salvar &amp; Sair</button>
+  </div>
+
+  <!-- COMBO -->
+  <div id="comboDisplay"></div>
+
+  <!-- REBIRTH NOTIF -->
+  <div id="rebirthNotif">⭐ RENASCIMENTO DISPONÍVEL! Clique aqui ⭐</div>
+
+  <!-- ════ JOYSTICK ════ -->
+  <div id="joystick">
+    <div class="joy-base">
+      <div class="joy-stick"></div>
+    </div>
+  </div>
+
+  <!-- ════ PAUSE OVERLAY ════ -->
+  <div id="pauseOverlay" style="display:none;flex-direction:column;align-items:center;justify-content:center;position:absolute;inset:0;background:rgba(7,11,26,0.85);z-index:12;backdrop-filter:blur(6px);gap:14px;">
+    <div class="pause-title">⏸ PAUSADO</div>
+    <button class="btn btn-primary" id="resumeBtn">▶ Continuar</button>
+    <button class="btn btn-danger"  id="pauseExitBtn">💾 Salvar &amp; Sair</button>
+  </div>
+
+  <!-- ════ UPGRADE PANEL ════ -->
+  <div id="upgradePanel">
+    <div class="panel-header">
+      <span class="panel-title">⚡ Upgrades</span>
+      <span class="panel-score" id="panelScore"><span>0</span> pts</span>
+      <button id="closePanelBtn">✕</button>
+    </div>
+
+    <div class="panel-tabs">
+      <button class="panel-tab active" data-tab="upgrades">🛒 Upgrades</button>
+      <button class="panel-tab" data-tab="rebirth">⭐ Renascer</button>
+      <button class="panel-tab" data-tab="stats">📊 Stats</button>
+    </div>
+
+    <div id="panelContent"></div>
+  </div>
+
+</div><!-- end gameContainer -->
+
+<script src="game.js"></script>
+</body>
+</html>
